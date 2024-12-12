@@ -1,4 +1,4 @@
-# Live Demo - https://splendid-mousse-afa2b1.netlify.app/
+# Live Demo - https://astonishing-croissant-b5cb5a.netlify.app/
 
 # App Snapshots:
 <img width="1468" alt="image" src="https://github.com/user-attachments/assets/453f3321-160c-4be0-bf8b-cab50ba7ed79" />
