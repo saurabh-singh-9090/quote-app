@@ -44,12 +44,13 @@ const QuoteList = () => {
     fetchQuotes();
   }, []);
 
+  console.log("QUOTES", quotes)
   return (
     <div className="quote-list-container">
       <h2>Quotes</h2>
       {error && <div className="error-message">{error}</div>}
       <div className="quote-list">
-        {quotes.map((quote) => (
+        {quotes?.map((quote) => (
           <div key={quote.id} className="quote-item">
             <div className="quote-image-container">
               <img src={quote.mediaUrl} alt="Quote" className="quote-image" />
@@ -57,7 +58,7 @@ const QuoteList = () => {
             </div>
             <div className="quote-info">
               <span>{quote.username}</span>
-              <span>{new Date(quote.created_at).toLocaleString()}</span>
+              <span>{new Date(quote.createdAt).toLocaleString()}</span>
             </div>
           </div>
         ))}
