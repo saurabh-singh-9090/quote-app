@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const QuoteList = () => {
@@ -9,7 +9,14 @@ const QuoteList = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const fetchQuotes = async () => {
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return isNaN(date.getTime()) ? 'Invalid Date' : date.toLocaleString();
+  };
+
+  const fetchQuotes = useCallback(async () => {
+    if (!hasMore || isLoading) return;
+
     setIsLoading(true);
     setError(null);
     try {
@@ -23,7 +30,7 @@ const QuoteList = () => {
       }
       const data = await response.json();
       if (Array.isArray(data.data)) {
-        if (data?.length === 0) {
+        if (data.length === 0) {
           setHasMore(false);
         } else {
           setQuotes((prevQuotes) => [...prevQuotes, ...data.data]);
@@ -38,19 +45,30 @@ const QuoteList = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [offset, hasMore, isLoading]);
+
+  const handleScroll = useCallback(() => {
+    if (window.innerHeight + document.documentElement.scrollTop + 1 >=
+        document.documentElement.scrollHeight) {
+      fetchQuotes();
+    }
+  }, [fetchQuotes]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
 
   useEffect(() => {
     fetchQuotes();
   }, []);
 
-  console.log("QUOTES", quotes)
   return (
     <div className="quote-list-container">
       <h2>Quotes</h2>
       {error && <div className="error-message">{error}</div>}
       <div className="quote-list">
-        {quotes?.map((quote) => (
+        {quotes.map((quote) => (
           <div key={quote.id} className="quote-item">
             <div className="quote-image-container">
               <img src={quote.mediaUrl} alt="Quote" className="quote-image" />
@@ -58,17 +76,13 @@ const QuoteList = () => {
             </div>
             <div className="quote-info">
               <span>{quote.username}</span>
-              <span>{new Date(quote.createdAt).toLocaleString()}</span>
+              <span>{formatDate(quote.createdAt)}</span>
             </div>
           </div>
         ))}
       </div>
       {isLoading && <div className="loading">Loading...</div>}
-      {hasMore && !isLoading && (
-        <button onClick={fetchQuotes} className="load-more-button">
-          Load More
-        </button>
-      )}
+      {!hasMore && <div className="end-message">No more quotes to load</div>}
       <button
         className="floating-action-button"
         onClick={() => navigate('/create-quote')}
@@ -80,4 +94,3 @@ const QuoteList = () => {
 };
 
 export default QuoteList;
-
