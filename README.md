@@ -1,7 +1,7 @@
 # Live Demo - https://stirring-sprite-098b0e.netlify.app/login
 
 
-#App Snapshots:
+# App Snapshots:
 <img width="1468" alt="image" src="https://github.com/user-attachments/assets/453f3321-160c-4be0-bf8b-cab50ba7ed79" />
 <img width="1468" alt="image" src="https://github.com/user-attachments/assets/8c844ce7-0e86-4a15-a9ad-1b09cf3f9352" />
 <img width="1465" alt="image" src="https://github.com/user-attachments/assets/eb25fbba-2722-4e35-a020-862f5b5fdf09" />
