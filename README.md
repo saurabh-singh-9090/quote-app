@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# To run the project locally:
+
+1. `git clone https://github.com/saurabh-singh-9090/Lookbook.git`
+2. `npm install`
+3. `npm start`
+
+# Tech Stacks Used
+React JS and Vanilla CSS
+
 ## Available Scripts
 
 In the project directory, you can run:
