@@ -7,6 +7,7 @@
 <img width="1465" alt="image" src="https://github.com/user-attachments/assets/eb25fbba-2722-4e35-a020-862f5b5fdf09" />
 
 Mobile screen snapshots:
+
 <img width="305" alt="image" src="https://github.com/user-attachments/assets/333db952-0ac9-4a77-9428-9578ffd0ddee" />
 <img width="305" alt="image" src="https://github.com/user-attachments/assets/c09e82c2-a400-4147-9c8c-c096aee04a6d" />
 <img width="306" alt="image" src="https://github.com/user-attachments/assets/531bddbe-69b2-45f6-9b6c-d97fd937ea69" />
